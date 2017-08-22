@@ -10,9 +10,9 @@ from tensorflow.contrib import learn
 
 import csv
 
-"""
-    Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/eval.py
-"""
+
+# Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/eval.py
+
 # Data parameters
 for cat in categories.categories:
     tf.flags.DEFINE_string(cat,"./getData/data/"+cat+".txt", "Titles taken from /r/" + cat + "/")

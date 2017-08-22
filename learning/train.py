@@ -8,6 +8,8 @@ from learning import text_cnn
 from tensorflow.contrib import learn
 from getData import categories
 
+# Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/train.py
+
 # Parameters
 # ==================================================
 

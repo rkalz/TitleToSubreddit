@@ -7,9 +7,8 @@ import os
 dir = os.path.dirname(os.path.realpath(__file__))
 dir += "\\data\\"
 
-"""
-    Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/data_helpers.py
-"""
+# Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/data_helpers.py
+
 
 def clean_str(string):
     """
@@ -55,7 +54,7 @@ def load_data_and_labels(categories):
     id = []
     pos = 0
     for _ in examples:
-        ref = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        ref = [0,0,0,0,0,0,0,0]
         ref[pos] = 1
         id.append(ref[:])
         ref[pos] = 0

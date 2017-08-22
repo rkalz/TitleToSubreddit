@@ -1,9 +1,8 @@
 import tensorflow as tf
 import numpy as np
 
-"""
-    Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/text_cnn.py
-"""
+# Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/text_cnn.py
+
 
 class TextCNN(object):
     """
