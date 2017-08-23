@@ -3,6 +3,9 @@ from flask import jsonify
 from flask import abort
 from flask import make_response
 
+import sys
+sys.path.append('../')
+
 from learning import eval
 
 def remove_special_characters(string):
@@ -70,5 +73,4 @@ def not_found_404(error):
 def not_found_400(error):
     return make_response(jsonify({'Error': 'Bad Request'}), 400)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app.run(host='0.0.0.0')

@@ -13,7 +13,7 @@ import json
 
 def evaluate(data):
     dir = os.path.dirname(os.path.realpath(__file__))
-    dir += "\\runs\\1503432797\\checkpoints"
+    dir += "/runs/1503432797/checkpoints"
 
     # Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/eval.py
 
@@ -60,7 +60,8 @@ def evaluate(data):
 
     # Evaluation
     # ==================================================
-    checkpoint_file = tf.train.latest_checkpoint(dir)
+    checkpoint_file = "/home/ubuntu/ml-eval-server/learning/runs/1503432797/checkpoints/model-54700"
+    print(checkpoint_file)
     graph = tf.Graph()
     with graph.as_default():
         session_conf = tf.ConfigProto(
