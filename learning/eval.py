@@ -21,6 +21,7 @@ def evaluate(data):
 
     # for cat in categories.categories100:
         # tf.flags.DEFINE_string(cat,"./getData/data/100/"+cat+".txt", "Titles taken from /r/" + cat + "/")
+    '''
     tf.flags.DEFINE_string("input","input","input")
 
     # Eval parameters
@@ -32,16 +33,17 @@ def evaluate(data):
     tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
     tf.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on devices")
 
-
+    
     FLAGS = tf.flags.FLAGS
     FLAGS._parse_flags()
     print("\nParameters:")
     for attr, value in sorted(FLAGS.__flags.items()):
         print("{}={}".format(attr.upper(), value))
     print("")
+    '''
 
     # CHANGE THIS: Load data. Load your own data here
-    if FLAGS.eval_train:
+    if True:
         x_raw = data_helpers.load_data_from_array(data)
         # y_test = np.argmax(y_test, axis=1)
         y_test = None
@@ -62,8 +64,8 @@ def evaluate(data):
     graph = tf.Graph()
     with graph.as_default():
         session_conf = tf.ConfigProto(
-          allow_soft_placement=FLAGS.allow_soft_placement,
-          log_device_placement=FLAGS.log_device_placement)
+          allow_soft_placement=True,
+          log_device_placement=False)
         sess = tf.Session(config=session_conf)
         with sess.as_default():
             # Load the saved meta graph and restore variables
@@ -79,7 +81,7 @@ def evaluate(data):
             predictions = graph.get_operation_by_name("output/predictions").outputs[0]
 
             # Generate batches for one epoch
-            batches = data_helpers.batch_iter(list(x_test), FLAGS.batch_size, 1, shuffle=False)
+            batches = data_helpers.batch_iter(list(x_test), 64, 1, shuffle=False)
 
             # Collect the predictions here
             all_predictions = []
