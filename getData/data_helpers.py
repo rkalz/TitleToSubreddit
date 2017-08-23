@@ -5,7 +5,7 @@ from collections import Counter
 import os
 
 dir = os.path.dirname(os.path.realpath(__file__))
-dir += "\\data\\"
+dir += "\\data\\1000\\"
 
 # Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/data_helpers.py
 
@@ -54,7 +54,7 @@ def load_data_and_labels(categories):
     id = []
     pos = 0
     for _ in examples:
-        ref = [0,0,0,0,0,0,0,0]
+        ref = [0] * len(examples)
         ref[pos] = 1
         id.append(ref[:])
         ref[pos] = 0
@@ -85,3 +85,35 @@ def batch_iter(data, batch_size, num_epochs, shuffle=True):
             start_index = batch_num * batch_size
             end_index = min((batch_num + 1) * batch_size, data_size)
             yield shuffled_data[start_index:end_index]
+
+def load_data_from_array(data):
+    """
+    Loads MR polarity data from files, splits the data into words and generates labels.
+    Returns split sentences and labels.
+
+    Modified for different number of labels
+    """
+
+    x_text = []
+    for d in data:
+        x_text.append(d + '\n')
+    # Split by words
+    x_text = [clean_str(sent) for sent in x_text]
+    # Generate labels
+    '''
+    labels = []
+    id = []
+    pos = 0
+    for _ in examples:
+        ref = [0,0,0,0,0,0,0,0]
+        ref[pos] = 1
+        id.append(ref[:])
+        ref[pos] = 0
+        pos += 1
+    pos = 0
+    for data in examples:
+        labels.append([id[pos] for _ in data])
+        pos += 1
+    y = np.concatenate(labels, 0)
+    '''
+    return x_text
