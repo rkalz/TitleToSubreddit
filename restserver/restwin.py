@@ -8,7 +8,7 @@ from flask_cors import CORS, cross_origin
 import sys
 sys.path.append('../')
 
-import eval
+from learning import eval
 
 def remove_special_characters(string):
     out = ''
@@ -40,10 +40,6 @@ services = [
         'description': u'Given a string input, returns which category it fits best in'
     }
 ]
-
-@app.route('/')
-def index():
-    return "Title to Subreddit Match API Server! <a href=\"/todo/api/v1/services\">Click here to view services.</a>"
 
 @app.route('/todo/api/v1/services',methods=['GET'])
 def get_all_services():
@@ -80,4 +76,4 @@ def not_found_404(error):
 def not_found_400(error):
     return make_response(jsonify({'Error': 'Bad Request'}), 400)
 
-app.run(host='0.0.0.0',port=80)
+app.run()

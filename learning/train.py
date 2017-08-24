@@ -3,10 +3,10 @@ import numpy as np
 import os
 import time
 import datetime
-import getData.data_helpers
+import getdata.data_helpers
 from learning import text_cnn
 from tensorflow.contrib import learn
-from getData import categories
+from getdata import categories
 
 # Taken from https://github.com/dennybritz/cnn-text-classification-tf/blob/master/train.py
 
@@ -48,7 +48,7 @@ print("")
 
 # Load data
 print("Loading data...")
-x_text, y = getData.data_helpers.load_data_and_labels(categories.categories)
+x_text, y = getdata.data_helpers.load_data_and_labels(categories.categories)
 
 # Build vocabulary
 max_document_length = max([len(x.split(" ")) for x in x_text])
